@@ -13,22 +13,20 @@ public class Main {
         System.out.println("Enter port:");
         int port = scanner.nextInt();
 
-        if(mode == 1) {
-            // Start the server
-            Server server = new Server();
-            server.start(port);
-        }
-
-        else if(mode == 2) {
-            // Start the client
-            System.out.println("Enter server IP:");
-            String ip = scanner.next();
-            Client client = new Client();
-            client.start(ip, port);
-        }
-
-        else {
-            System.out.println("Invalid mode selected, closing.");
+        switch (mode) {
+            case 1 -> {
+                // Start the server
+                Server server = new Server();
+                server.start(port);
+            }
+            case 2 -> {
+                // Start the client
+                System.out.println("Enter server IP:");
+                String ip = scanner.next();
+                Client client = new Client();
+                client.start(ip, port);
+            }
+            default -> System.out.println("Invalid mode selected, closing.");
         }
 
         scanner.close();
